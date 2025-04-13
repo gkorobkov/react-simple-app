@@ -6,28 +6,30 @@ import ReactDOM from 'react-dom/client';
 
 function RenderResult() {
       const [todos, setTodos] = useState([]);
+      //const [todos, setTodos] = useState([]);
     
       useEffect(() => {
         const getTodos = async () => {
           const response = await fetch(
-            'https://jsonplaceholder.typicode.com/users'
+            'https://jsonplaceholder.typicode.com/posts?_limit=2'
           );
+          
           const data = await response.json();
+          console.log('1');
           console.log(data);
           setTodos(data);
         };
         getTodos();
       }, []);
     
+      console.log('2');
       console.log(todos);
     
       return (
         <div>
-          {todos.map((todo) => (
-            <div key={todo.id}>
-              <h2>{todo.id}: {todo.name}</h2>
-            </div>
-          ))}
+          {
+          todos ? (todos.map((todo) => (<div key={todo.id}><h3>{todo.id}: </h3></div>))) : (<h2>Loading...</h2>)
+          }
         </div>
       );
     }

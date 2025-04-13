@@ -27289,6 +27289,8 @@ function RenderResult() {
     _useState2 = _slicedToArray(_useState, 2),
     todos = _useState2[0],
     setTodos = _useState2[1];
+  //const [todos, setTodos] = useState([]);
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var getTodos = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -27297,16 +27299,17 @@ function RenderResult() {
           while (1) switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return fetch('https://jsonplaceholder.typicode.com/users');
+              return fetch('https://jsonplaceholder.typicode.com/users?_limit=2');
             case 2:
               response = _context.sent;
               _context.next = 5;
               return response.json();
             case 5:
               data = _context.sent;
+              console.log('1');
               console.log(data);
               setTodos(data);
-            case 8:
+            case 9:
             case "end":
               return _context.stop();
           }
@@ -27318,12 +27321,13 @@ function RenderResult() {
     }();
     getTodos();
   }, []);
+  console.log('2');
   console.log(todos);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, todos.map(function (todo) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, todos ? todos.map(function (todo) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       key: todo.id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, todo.id, ": ", todo.name));
-  }));
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, todo.id, ": "));
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Loading..."));
 }
 var root = react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot(document.getElementById("root"));
 root.render(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(RenderResult, null));
