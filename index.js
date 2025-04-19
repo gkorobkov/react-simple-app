@@ -11,7 +11,7 @@ function RenderResult() {
       useEffect(() => {
         const getTodos = async () => {
           const response = await fetch(
-            'https://jsonplaceholder.typicode.com/posts?_limit=2'
+            'http://127.0.0.1:8080/api/account'
           );
           
           const data = await response.json();

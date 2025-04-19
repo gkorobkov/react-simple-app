@@ -27299,7 +27299,7 @@ function RenderResult() {
           while (1) switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return fetch('https://jsonplaceholder.typicode.com/users?_limit=2');
+              return fetch('http://127.0.0.1:8080/api/account');
             case 2:
               response = _context.sent;
               _context.next = 5;
