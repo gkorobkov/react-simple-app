@@ -11,7 +11,9 @@ function RenderResult() {
       useEffect(() => {
         const getTodos = async () => {
           const response = await fetch(
-            'http://127.0.0.1:8080/api/account'
+            'http://localhost:8081/api/account'
+            //'http://127.0.0.1:8080/api/account'
+            //'http://localhost:8081/api/account'
           );
           
           const data = await response.json();
@@ -28,7 +30,7 @@ function RenderResult() {
       return (
         <div>
           {
-          todos ? (todos.map((todo) => (<div key={todo.id}><h3>{todo.id}: </h3></div>))) : (<h2>Loading...</h2>)
+          todos ? (todos.map((todo) => (<div key={todo.id}><h3>{todo.id}: {todo.client}</h3></div>))) : (<h2>Loading...</h2>)
           }
         </div>
       );
